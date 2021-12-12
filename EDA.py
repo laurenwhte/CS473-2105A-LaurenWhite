@@ -103,6 +103,7 @@ df.info()
 cols = df.select_dtypes('object').columns
 df[cols] = df[cols].stack().astype('category').cat.codes.unstack()
 df = df.astype('float64')  # Convert all to one dtype
+print('\nConfirmation of changed types: \n')
 df.info()
 
 # VISUALIZATION -
@@ -127,6 +128,12 @@ plt.show()
 # which means the higher those numbers (1 being male, 3 being third class) the less
 # likely that person was to survive. There is a positive correlation with fare, which
 # means the higher the fare, the more likely the person was to survive.
+
+# There is almost no correlation between survival and name or ticket, so I am
+# dropping those features as well.
+df = df.drop(['name', 'ticket'], axis=1)
+print('\nConfirmation of final dataset: \n')
+print(df.info())
 
 # I think we are ready to move on to the model now.
 

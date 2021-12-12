@@ -13,6 +13,8 @@ from sklearn.preprocessing import MinMaxScaler
 # display details about each of the features, and apply a k-means
 # clustering algorithm to predict survival.
 
+# We have cleaned & encoded the data, so now we move onto the model.
+
 # Creating feature and target arrays.
 X = df.drop('survived', axis=1).values  # Features = everything that isn't survived
 y = df['survived'].values  # Target = survived
@@ -22,7 +24,7 @@ scaler = MinMaxScaler()
 X_scaled = scaler.fit_transform(X)
 
 # Building the model
-model = KMeans(n_clusters=2)
+model = KMeans(n_clusters=2)  # Survived and not survived.
 model.fit(X_scaled)
 
 # Evaluate.
@@ -36,4 +38,5 @@ for i in range(len(X_scaled)):  # For every record in X_new
     if prediction[0] == y[i]:  # If == to reality
         correct += 1  # Increase correct variable
 
-print(correct / len(X_scaled))
+accuracy = "{:.2%}".format(correct / len(X_scaled))
+print('\nThe accuracy of the KMeans model is: ', accuracy)
