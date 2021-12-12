@@ -1,4 +1,3 @@
-# CS473-2105A-LaurenWhite
 CS473 Unit 1 Project
 
 CS473-2105A Data Mining
