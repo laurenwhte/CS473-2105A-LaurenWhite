@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 # CS473-2105A Data Mining
 # Prof. Chintan Thakkar
 # December 12, 2021
@@ -14,7 +15,7 @@ import pandas as pd
 
 # Method to check for NaN values.
 def null_values(df):
-    total = df.isnull().sum().sort_values(ascending=False)  # Add up how many missing datapoints there are.
+    total = df.isnull().sum().sort_values(ascending=False)  # Add up how many missing data points there are.
     percent_1 = df.isnull().sum() / df.isnull().count() * 100  # Divide that by the total records to get % missing.
     percent_2 = (round(percent_1, 1)).sort_values(ascending=False)  # Format % and sort descending.
     missing_data = pd.concat([total, percent_2], axis=1, keys=['Total', '%'])  # Zip/concat the data into a new table
